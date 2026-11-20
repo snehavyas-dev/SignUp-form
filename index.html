@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create your account</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Space+Grotesk:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <main class="page-shell" id="signup-card">
+      <section class="intro-panel" aria-labelledby="welcome-heading">
+        <div class="brand-mark" aria-label="NOVA home">N<span>O</span>VA</div>
+        <div class="cover-content">
+          <p class="eyebrow">Join the community <span class="eyebrow-line"></span></p>
+          <h1 id="welcome-heading">Make room for what’s next.</h1>
+          <p class="intro-copy">
+            Create an account to keep your details safe and start your journey
+            with us.
+          </p>
+          <button class="cover-action" id="show-form" type="button">
+            Get started <span aria-hidden="true">↗</span>
+          </button>
+        </div>
+        <div class="accent-shape accent-shape-one" aria-hidden="true"></div>
+        <div class="accent-shape accent-shape-two" aria-hidden="true"></div>
+        <p class="cover-meta">01 <span></span> 02</p>
+      </section>
+
+      <section class="form-panel" aria-labelledby="form-heading">
+        <button class="back-action" id="show-cover" type="button">
+          <span aria-hidden="true">←</span> Back
+        </button>
+        <div class="form-heading">
+          <p class="eyebrow">Create profile <span class="eyebrow-line"></span></p>
+          <h2 id="form-heading">Create your account</h2>
+          <p>It only takes a minute. All fields are required.</p>
+        </div>
+
+        <form id="signup-form" novalidate>
+          <div class="field-grid">
+            <div class="field-group">
+              <label for="email">Email address</label>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                autocomplete="email"
+                placeholder="you@example.com"
+                required
+                aria-describedby="email-error"
+              />
+              <small class="error-message" id="email-error"></small>
+            </div>
+
+            <div class="field-group">
+              <label for="country">Country</label>
+              <select id="country" name="country" required aria-describedby="country-error">
+                <option value="">Select your country</option>
+                <option value="au">Australia</option>
+                <option value="ca">Canada</option>
+                <option value="in">India</option>
+                <option value="uk">United Kingdom</option>
+                <option value="us">United States</option>
+              </select>
+              <small class="error-message" id="country-error"></small>
+            </div>
+
+            <div class="field-group">
+              <label for="postal-code">Postal code</label>
+              <input
+                id="postal-code"
+                name="postalCode"
+                type="text"
+                autocomplete="postal-code"
+                inputmode="numeric"
+                placeholder="e.g. 110001"
+                minlength="3"
+                maxlength="10"
+                required
+                aria-describedby="postal-code-error"
+              />
+              <small class="error-message" id="postal-code-error"></small>
+            </div>
+
+            <div class="field-group">
+              <label for="password">Password</label>
+              <input
+                id="password"
+                name="password"
+                type="password"
+                autocomplete="new-password"
+                placeholder="At least 8 characters"
+                minlength="8"
+                required
+                aria-describedby="password-error"
+              />
+              <small class="error-message" id="password-error"></small>
+            </div>
+
+            <div class="field-group field-group-wide">
+              <label for="password-confirmation">Confirm password</label>
+              <input
+                id="password-confirmation"
+                name="passwordConfirmation"
+                type="password"
+                autocomplete="new-password"
+                placeholder="Re-enter your password"
+                required
+                aria-describedby="password-confirmation-error"
+              />
+              <small class="error-message" id="password-confirmation-error"></small>
+            </div>
+          </div>
+
+          <button type="submit">Create account <span aria-hidden="true">→</span></button>
+          <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+        </form>
+      </section>
+    </main>
+  </body>
+</html>
