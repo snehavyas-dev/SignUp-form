@@ -3,126 +3,390 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Create your account</title>
+    <title>NOVA — SignUp Form & Authentication</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Space+Grotesk:wght@500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="style.css" />
     <script src="script.js" defer></script>
   </head>
   <body>
-    <main class="page-shell" id="signup-card">
-      <section class="intro-panel" aria-labelledby="welcome-heading">
-        <div class="brand-mark" aria-label="NOVA home">N<span>O</span>VA</div>
-        <div class="cover-content">
-          <p class="eyebrow">Join the community <span class="eyebrow-line"></span></p>
-          <h1 id="welcome-heading">Make room for what’s next.</h1>
-          <p class="intro-copy">
-            Create an account to keep your details safe and start your journey
-            with us.
-          </p>
-          <button class="cover-action" id="show-form" type="button">
-            Get started <span aria-hidden="true">↗</span>
+    <!-- Top Interactive Controls Bar -->
+    <header class="quick-nav" role="toolbar" aria-label="Demo controls">
+      <div class="quick-nav-pill">SignUp Form</div>
+      <button class="swap-trigger-btn" id="btn-toggle-swap" type="button" title="Swap Cards in 3D">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M8 3L4 7l4 4M4 7h16M16 21l4-4-4-4M20 17H4"></path>
+        </svg>
+        <span id="swap-btn-label">Swap to Log In</span>
+      </button>
+      <button class="swap-trigger-btn" id="btn-demo-view-website" type="button" title="Visit Demo Website">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="2" y1="12" x2="22" y2="12"></line>
+          <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+        </svg>
+        View Website
+      </button>
+    </header>
+
+    <!-- ================= 1. AUTH CARD (SIGN-UP / LOG IN) ================= -->
+    <main class="auth-container" id="auth-box">
+      <!-- VISUAL SHOWCASE CARD WITH 3 ROTATING IMAGES -->
+      <section class="visual-card" id="visual-showcase" aria-label="Brand showcase">
+        <!-- Slides Stage: 3 Distinct Atmospheric Visuals -->
+        <div class="slides-stage">
+          <!-- Slide 1: Twilight Desert Dunes -->
+          <svg class="slide-bg active" id="slide-0" viewBox="0 0 600 700" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="skyGrad1" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#141424"/>
+                <stop offset="35%" stop-color="#211e3b"/>
+                <stop offset="70%" stop-color="#3d3363"/>
+                <stop offset="100%" stop-color="#55447a"/>
+              </linearGradient>
+              <linearGradient id="duneB1" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#3b3259"/><stop offset="50%" stop-color="#241f3b"/><stop offset="100%" stop-color="#151226"/>
+              </linearGradient>
+              <linearGradient id="duneM1" x1="0" y1="0" x2="1" y2="0.8">
+                <stop offset="0%" stop-color="#2a2345"/><stop offset="45%" stop-color="#1b1630"/><stop offset="100%" stop-color="#100d1e"/>
+              </linearGradient>
+              <linearGradient id="duneF1" x1="0" y1="0" x2="0.8" y2="1">
+                <stop offset="0%" stop-color="#1a152e"/><stop offset="50%" stop-color="#110d21"/><stop offset="100%" stop-color="#0a0814"/>
+              </linearGradient>
+            </defs>
+            <rect width="600" height="700" fill="url(#skyGrad1)"/>
+            <circle cx="480" cy="180" r="1.5" fill="#ffffff" opacity="0.8"/>
+            <circle cx="120" cy="110" r="1.2" fill="#ffffff" opacity="0.6"/>
+            <circle cx="340" cy="70" r="1.8" fill="#ffffff" opacity="0.9"/>
+            <path d="M-50,420 Q120,290 320,380 T650,340 L650,700 L-50,700 Z" fill="url(#duneB1)" opacity="0.9"/>
+            <path d="M-30,490 Q180,360 420,440 T650,420 L650,700 L-30,700 Z" fill="url(#duneM1)"/>
+            <path d="M-20,560 Q220,420 460,530 T650,510 L650,700 L-20,700 Z" fill="url(#duneF1)"/>
+          </svg>
+
+          <!-- Slide 2: Cosmic Aurora & Alpine Peaks -->
+          <svg class="slide-bg" id="slide-1" viewBox="0 0 600 700" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="auroraSky" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#0a1020"/>
+                <stop offset="50%" stop-color="#102538"/>
+                <stop offset="100%" stop-color="#183648"/>
+              </linearGradient>
+              <linearGradient id="auroraLight" x1="0" y1="0" x2="1" y2="0.5">
+                <stop offset="0%" stop-color="rgba(16, 185, 129, 0)"/>
+                <stop offset="40%" stop-color="rgba(52, 211, 153, 0.45)"/>
+                <stop offset="65%" stop-color="rgba(129, 140, 248, 0.5)"/>
+                <stop offset="100%" stop-color="rgba(16, 185, 129, 0)"/>
+              </linearGradient>
+              <linearGradient id="mtnGrad" x1="0" y1="0" x2="0.5" y2="1">
+                <stop offset="0%" stop-color="#1e293b"/>
+                <stop offset="100%" stop-color="#0b111e"/>
+              </linearGradient>
+            </defs>
+            <rect width="600" height="700" fill="url(#auroraSky)"/>
+            <path d="M-50,150 Q180,50 350,190 T650,120 L650,420 L-50,420 Z" fill="url(#auroraLight)" filter="blur(20px)"/>
+            <circle cx="200" cy="80" r="1.5" fill="#ffffff" opacity="0.9"/>
+            <circle cx="450" cy="110" r="1.3" fill="#ffffff" opacity="0.8"/>
+            <circle cx="90" cy="190" r="1" fill="#ffffff" opacity="0.5"/>
+            <polygon points="120,380 280,220 440,380" fill="url(#mtnGrad)" opacity="0.85"/>
+            <polygon points="-40,480 140,290 320,480" fill="#151e2e"/>
+            <polygon points="260,520 480,270 680,520" fill="#0d1420"/>
+            <polygon points="80,580 340,360 620,580" fill="#090d15"/>
+          </svg>
+
+          <!-- Slide 3: Deep Cyber Neon & Horizon Grid -->
+          <svg class="slide-bg" id="slide-2" viewBox="0 0 600 700" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="cyberSky" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#170d2b"/>
+                <stop offset="50%" stop-color="#2a124a"/>
+                <stop offset="100%" stop-color="#491a6e"/>
+              </linearGradient>
+              <radialGradient id="sunGlow" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#f43f5e"/>
+                <stop offset="60%" stop-color="#8b5cf6"/>
+                <stop offset="100%" stop-color="transparent"/>
+              </radialGradient>
+            </defs>
+            <rect width="600" height="700" fill="url(#cyberSky)"/>
+            <circle cx="300" cy="350" r="140" fill="url(#sunGlow)" opacity="0.8"/>
+            <circle cx="300" cy="350" r="140" stroke="#f43f5e" stroke-width="2" fill="none" opacity="0.6"/>
+            <rect y="440" width="600" height="260" fill="#0e071c"/>
+            <line x1="0" y1="440" x2="600" y2="440" stroke="#f43f5e" stroke-width="3" opacity="0.8"/>
+            <line x1="0" y1="470" x2="600" y2="470" stroke="#8b5cf6" stroke-width="1.5" opacity="0.5"/>
+            <line x1="0" y1="520" x2="600" y2="520" stroke="#8b5cf6" stroke-width="1" opacity="0.3"/>
+            <line x1="0" y1="590" x2="600" y2="590" stroke="#8b5cf6" stroke-width="1" opacity="0.2"/>
+          </svg>
+        </div>
+
+        <div class="visual-overlay"></div>
+
+        <!-- Top Content: Brand & "Back to website" pill -->
+        <div class="visual-content-top">
+          <div class="brand-logo">N<span>O</span>VA</div>
+          <button class="btn-website-pill" type="button" id="btn-back-web" title="Explore the full NOVA Website">
+            Back to website
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
           </button>
         </div>
-        <div class="accent-shape accent-shape-one" aria-hidden="true"></div>
-        <div class="accent-shape accent-shape-two" aria-hidden="true"></div>
-        <p class="cover-meta">01 <span></span> 02</p>
+
+        <!-- Bottom Content: Dynamic Headline & 3 Indicator Dashes -->
+        <div class="visual-content-bottom">
+          <h1 class="visual-headline" id="carousel-headline">
+            Capturing Moments, <br />Creating Memories
+          </h1>
+          <!-- 3 Interactive Image Dashes -->
+          <div class="carousel-indicators" id="carousel-pips" title="Switch visual images">
+            <span class="indicator-dash active" data-index="0" title="Slide 1: Twilight Dunes"></span>
+            <span class="indicator-dash" data-index="1" title="Slide 2: Aurora Peaks"></span>
+            <span class="indicator-dash" data-index="2" title="Slide 3: Cyber Horizon"></span>
+          </div>
+        </div>
       </section>
 
-      <section class="form-panel" aria-labelledby="form-heading">
-        <button class="back-action" id="show-cover" type="button">
-          <span aria-hidden="true">←</span> Back
-        </button>
-        <div class="form-heading">
-          <p class="eyebrow">Create profile <span class="eyebrow-line"></span></p>
-          <h2 id="form-heading">Create your account</h2>
-          <p>It only takes a minute. All fields are required.</p>
-        </div>
-
-        <form id="signup-form" novalidate>
-          <div class="field-grid">
-            <div class="field-group">
-              <label for="email">Email address</label>
-              <input
-                id="email"
-                name="email"
-                type="email"
-                autocomplete="email"
-                placeholder="you@example.com"
-                required
-                aria-describedby="email-error"
-              />
-              <small class="error-message" id="email-error"></small>
+      <!-- AUTH FORM WRAPPER (HOUSES SIGN-UP AND LOGIN) -->
+      <section class="form-wrapper">
+        <div class="form-views-container">
+          <!-- 1. SIGN UP FORM -->
+          <div class="form-state-card" id="view-signup">
+            <div class="form-header">
+              <h2>Create an account</h2>
+              <p class="form-subtext">
+                Already have an account?
+                <a id="link-goto-login">Log in</a>
+              </p>
             </div>
 
-            <div class="field-group">
-              <label for="country">Country</label>
-              <select id="country" name="country" required aria-describedby="country-error">
-                <option value="">Select your country</option>
-                <option value="au">Australia</option>
-                <option value="ca">Canada</option>
-                <option value="in">India</option>
-                <option value="uk">United Kingdom</option>
-                <option value="us">United States</option>
-              </select>
-              <small class="error-message" id="country-error"></small>
-            </div>
+            <form id="form-signup-action" novalidate>
+              <div class="field-row-split">
+                <div class="input-control-wrap">
+                  <input id="first-name" type="text" placeholder="First name" autocomplete="given-name" required />
+                </div>
+                <div class="input-control-wrap">
+                  <input id="last-name" type="text" placeholder="Last name" autocomplete="family-name" required />
+                </div>
+              </div>
 
-            <div class="field-group">
-              <label for="postal-code">Postal code</label>
-              <input
-                id="postal-code"
-                name="postalCode"
-                type="text"
-                autocomplete="postal-code"
-                inputmode="numeric"
-                placeholder="e.g. 110001"
-                minlength="3"
-                maxlength="10"
-                required
-                aria-describedby="postal-code-error"
-              />
-              <small class="error-message" id="postal-code-error"></small>
-            </div>
+              <div class="field-box">
+                <div class="input-control-wrap">
+                  <input id="signup-email" type="email" placeholder="Email" autocomplete="email" required />
+                </div>
+              </div>
 
-            <div class="field-group">
-              <label for="password">Password</label>
-              <input
-                id="password"
-                name="password"
-                type="password"
-                autocomplete="new-password"
-                placeholder="At least 8 characters"
-                minlength="8"
-                required
-                aria-describedby="password-error"
-              />
-              <small class="error-message" id="password-error"></small>
-            </div>
+              <!-- Password + Eye Toggle + Strength Meter -->
+              <div class="field-box">
+                <div class="input-control-wrap">
+                  <input id="signup-pwd" type="password" class="has-toggle" placeholder="Enter your password" autocomplete="new-password" required />
+                  <button type="button" class="toggle-eye-btn" data-target="signup-pwd" aria-label="Toggle password visibility">
+                    <svg class="eye-show" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                    <svg class="eye-hide" style="display: none;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line></svg>
+                  </button>
+                </div>
 
-            <div class="field-group field-group-wide">
-              <label for="password-confirmation">Confirm password</label>
-              <input
-                id="password-confirmation"
-                name="passwordConfirmation"
-                type="password"
-                autocomplete="new-password"
-                placeholder="Re-enter your password"
-                required
-                aria-describedby="password-confirmation-error"
-              />
-              <small class="error-message" id="password-confirmation-error"></small>
-            </div>
+                <div class="pwd-meter-box" id="pwd-meter">
+                  <div class="pwd-meter-segments">
+                    <div class="pwd-meter-segment" id="seg-1"></div>
+                    <div class="pwd-meter-segment" id="seg-2"></div>
+                    <div class="pwd-meter-segment" id="seg-3"></div>
+                    <div class="pwd-meter-segment" id="seg-4"></div>
+                  </div>
+                  <div class="pwd-meter-legend">
+                    <span>Strength: <strong class="pwd-strength-txt" id="pwd-strength-label">Weak</strong></span>
+                    <span id="pwd-strength-hint">Min 8 chars, 1 number</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Confirm Password + Match Badge -->
+              <div class="field-box">
+                <div class="input-control-wrap">
+                  <input id="signup-confirm-pwd" type="password" class="has-toggle" placeholder="Confirm your password" autocomplete="new-password" required />
+                  <button type="button" class="toggle-eye-btn" data-target="signup-confirm-pwd" aria-label="Toggle confirm password visibility">
+                    <svg class="eye-show" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                    <svg class="eye-hide" style="display: none;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line></svg>
+                  </button>
+                </div>
+                <div class="match-status-badge" id="pwd-match-badge"></div>
+              </div>
+
+              <!-- Terms Checkbox -->
+              <label class="checkbox-row">
+                <input type="checkbox" class="custom-checkbox" id="terms-agree" checked required />
+                <span>I agree to the <a href="#terms">Terms & Conditions</a></span>
+              </label>
+
+              <!-- Submit -->
+              <button type="submit" class="btn-auth-primary" id="btn-submit-signup">
+                Create account
+              </button>
+
+              <div class="auth-divider">Or register with</div>
+
+              <!-- Social Auth: Google & Apple -->
+              <div class="social-row">
+                <button type="button" class="btn-social" id="btn-social-google">
+                  <svg viewBox="0 0 24 24">
+                    <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                    <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                    <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+                    <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+                  </svg>
+                  Google
+                </button>
+                <button type="button" class="btn-social" id="btn-social-apple">
+                  <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.85c.62-.75 1.04-1.8 0.93-2.85-.9.04-1.99.6-2.64 1.36-.57.65-1.06 1.72-.93 2.74 1 .08 2.02-.5 2.64-1.25z"/>
+                  </svg>
+                  Apple
+                </button>
+              </div>
+            </form>
           </div>
 
-          <button type="submit">Create account <span aria-hidden="true">→</span></button>
-          <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
-        </form>
+          <!-- 2. LOG IN FORM (SWAPPED VIEW) -->
+          <div class="form-state-card is-hidden" id="view-login">
+            <div class="form-header">
+              <h2>Welcome back</h2>
+              <p class="form-subtext">
+                Don’t have an account?
+                <a id="link-goto-signup">Create one</a>
+              </p>
+            </div>
+
+            <form id="form-login-action" novalidate>
+              <div class="field-box">
+                <div class="input-control-wrap">
+                  <input id="login-email" type="email" placeholder="Email" autocomplete="email" required />
+                </div>
+              </div>
+
+              <div class="field-box">
+                <div class="input-control-wrap">
+                  <input id="login-pwd" type="password" class="has-toggle" placeholder="Enter your password" autocomplete="current-password" required />
+                  <button type="button" class="toggle-eye-btn" data-target="login-pwd" aria-label="Toggle password visibility">
+                    <svg class="eye-show" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                    <svg class="eye-hide" style="display: none;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line></svg>
+                  </button>
+                </div>
+              </div>
+
+              <div class="remember-forgot-row">
+                <label class="checkbox-row no-margin">
+                  <input type="checkbox" class="custom-checkbox" checked />
+                  <span>Remember me</span>
+                </label>
+                <a href="#forgot" class="link-forgot" id="link-forgot-pwd">Forgot password?</a>
+              </div>
+
+              <button type="submit" class="btn-auth-primary" id="btn-submit-login">
+                Log in
+              </button>
+
+              <div class="auth-divider">Or continue with</div>
+
+              <div class="social-row">
+                <button type="button" class="btn-social btn-social-login-google">
+                  <svg viewBox="0 0 24 24">
+                    <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                    <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                    <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+                    <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+                  </svg>
+                  Google
+                </button>
+                <button type="button" class="btn-social btn-social-login-apple">
+                  <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.85c.62-.75 1.04-1.8 0.93-2.85-.9.04-1.99.6-2.64 1.36-.57.65-1.06 1.72-.93 2.74 1 .08 2.02-.5 2.64-1.25z"/>
+                  </svg>
+                  Apple
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
       </section>
     </main>
+
+    <!-- ================= 2. DEMO WEBSITE PAGE (TRIGGERED BY "Back to website") ================= -->
+    <section class="website-page" id="website-view" aria-label="NOVA Homepage Demo">
+      <!-- Navbar -->
+      <header class="site-nav">
+        <div class="brand-logo">N<span>O</span>VA</div>
+        <nav class="site-nav-links">
+          <a href="#products">Products</a>
+          <a href="#solutions">Solutions</a>
+          <a href="#resources">Resources</a>
+          <a href="#pricing">Pricing</a>
+        </nav>
+        <button class="btn-open-auth" type="button" id="btn-return-to-signup">
+          <span>Go to Sign Up</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+      </header>
+
+      <!-- Hero Section -->
+      <div class="site-hero">
+        <div class="site-badge">✨ Next-Generation Creator Platform</div>
+        <h1>Capturing Moments, <br /><span>Creating Memories.</span></h1>
+        <p>The unified digital ecosystem built for visual artists, designers, and forward-thinking creators. Lightning-fast sync, boundless creative tools, and zero friction.</p>
+        <div class="hero-ctas">
+          <button class="btn-hero-primary" type="button" id="btn-hero-signup">Get Started Free →</button>
+          <button class="btn-hero-secondary" type="button" id="btn-hero-learn">Explore Features</button>
+        </div>
+      </div>
+
+      <!-- Feature Grid -->
+      <div class="site-features">
+        <div class="feature-box">
+          <div class="feature-icon-bubble">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          </div>
+          <h4>Instant 3D Motion</h4>
+          <p>Physics-driven interfaces with spatial depth, realistic card swaps, and micro-interactions that delight users.</p>
+        </div>
+
+        <div class="feature-box">
+          <div class="feature-icon-bubble">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+          </div>
+          <h4>Encrypted Security</h4>
+          <p>End-to-end data encryption with real-time password strength telemetry and biometric verification.</p>
+        </div>
+
+        <div class="feature-box">
+          <div class="feature-icon-bubble">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          </div>
+          <h4>Seamless Cross-Platform</h4>
+          <p>Access your creative suite anywhere from desktop to mobile with zero latency synchronization.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= UNIFIED LUXURY CUSTOM POP-UP MODAL ================= -->
+    <div class="custom-modal-overlay" id="app-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <div class="custom-modal-card">
+        <button type="button" class="modal-close-x" id="modal-close-btn" aria-label="Close dialog">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+        <div class="modal-icon-wrap" id="modal-icon">
+          <!-- Dynamic SVG injected by JS -->
+          <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+        </div>
+        <h3 id="modal-title">Welcome to NOVA!</h3>
+        <p id="modal-message">Your request has been processed successfully.</p>
+        <div class="modal-action-row">
+          <button class="btn-modal-action" type="button" id="modal-action-btn">Done</button>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
